@@ -40,6 +40,10 @@ class InputController: IMKInputController {
         if isRecording {
             stopRecording(client: sender as? IMKTextInput)
         }
+        // Clear any status text on focus loss
+        if !statusText.isEmpty {
+            dismissStatusText(client: sender as? IMKTextInput)
+        }
         whisperManager.onStateChange = nil
         super.deactivateServer(sender)
     }
@@ -91,6 +95,10 @@ class InputController: IMKInputController {
         if isRecording {
             return true
         }
+        // Clear status text when user starts typing normally
+        if !statusText.isEmpty {
+            dismissStatusText(client: client)
+        }
         return false
     }
 
@@ -104,6 +112,11 @@ class InputController: IMKInputController {
             hint = "Hold right Option to speak"
         }
         showTemporaryMarkedText(client: client, text: "[\(hint)]", duration: 3.0)
+    }
+
+    private func dismissStatusText(client: IMKTextInput?) {
+        statusText = ""
+        clearMarkedText(client: client)
     }
 
     private func showTemporaryMarkedText(client: IMKTextInput, text: String, duration: TimeInterval) {
