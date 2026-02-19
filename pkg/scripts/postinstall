@@ -1,0 +1,13 @@
+#!/bin/bash
+# Post-install script for WisperKbd
+# Kills any running instance so macOS loads the new version
+
+killall WisperKbd 2>/dev/null || true
+
+# Brief pause to let the system notice the new binary
+sleep 1
+
+echo "WisperKbd installed to /Library/Input Methods/"
+echo "Enable in: System Settings > Keyboard > Input Sources > Edit > + > WisperKbd"
+
+exit 0

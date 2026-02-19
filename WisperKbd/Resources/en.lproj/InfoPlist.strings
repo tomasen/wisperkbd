@@ -1,0 +1,5 @@
+/* Display name for the input method in System Settings */
+InputMethodServerName = "WisperKbd";
+
+/* Display name for the voice input mode */
+"com.tomasen.inputmethod.WisperKbd.Voice" = "WisperKbd - Voice";

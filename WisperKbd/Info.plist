@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>WisperKbd</string>
+    <key>CFBundleDisplayName</key>
+    <string>WisperKbd</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.tomasen.inputmethod.WisperKbd</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+
+    <!-- Background-only app (no Dock icon) -->
+    <key>LSBackgroundOnly</key>
+    <true/>
+
+    <!-- Display name shown in input method menu bar and System Settings -->
+    <key>InputMethodServerName</key>
+    <string>WisperKbd</string>
+
+    <!-- IMKit: Mach port connection name -->
+    <key>InputMethodConnectionName</key>
+    <string>com.tomasen.inputmethod.WisperKbd_Connection</string>
+
+    <!-- IMKit: Controller class (module-qualified for Swift) -->
+    <key>InputMethodServerControllerClass</key>
+    <string>WisperKbd.InputController</string>
+
+    <!-- IMKit: Character repertoire -->
+    <key>tsInputMethodCharacterRepertoireKey</key>
+    <array>
+        <string>Latn</string>
+    </array>
+
+    <!-- IMKit: Icon for menu bar -->
+    <key>tsInputMethodIconFileKey</key>
+    <string>icon</string>
+
+    <!-- IMKit: Input modes -->
+    <key>ComponentInputModeDict</key>
+    <dict>
+        <key>tsInputModeListKey</key>
+        <dict>
+            <key>com.tomasen.inputmethod.WisperKbd.Voice</key>
+            <dict>
+                <key>TISInputSourceID</key>
+                <string>com.tomasen.inputmethod.WisperKbd.Voice</string>
+                <key>TISIntendedLanguage</key>
+                <string>en</string>
+                <key>tsInputModeMenuIconFileKey</key>
+                <string>icon</string>
+                <key>tsInputModeAlternateMenuIconFileKey</key>
+                <string>icon</string>
+                <key>tsInputModeDefaultStateKey</key>
+                <true/>
+                <key>tsInputModePrimaryInScriptKey</key>
+                <true/>
+                <key>tsInputModeScriptKey</key>
+                <string>smRoman</string>
+                <key>tsInputModeIsVisibleKey</key>
+                <true/>
+            </dict>
+        </dict>
+        <key>tsVisibleInputModeOrderedArrayKey</key>
+        <array>
+            <string>com.tomasen.inputmethod.WisperKbd.Voice</string>
+        </array>
+    </dict>
+
+    <!-- Microphone permission -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>WisperKbd needs microphone access for voice-to-text input.</string>
+</dict>
+</plist>
