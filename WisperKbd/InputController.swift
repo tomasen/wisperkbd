@@ -55,6 +55,26 @@ class InputController: IMKInputController {
         return Int(mask.rawValue)
     }
 
+    /// Called by IMKit for regular text input (characters typed on keyboard).
+    /// This is the primary entry point for normal typing — handle() may not be called.
+    override func inputText(_ string: String!, client sender: Any!) -> Bool {
+        guard let client = sender as? IMKTextInput else { return false }
+        // Clear status text when user types normally
+        if !statusText.isEmpty {
+            dismissStatusText(client: client)
+        }
+        // Don't consume — let the system handle normal text input
+        return false
+    }
+
+    /// Called by IMKit when composition should be cancelled (e.g., clicking elsewhere).
+    override func cancelComposition() {
+        if !statusText.isEmpty {
+            statusText = ""
+        }
+        super.cancelComposition()
+    }
+
     override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
         guard let event = event, let client = sender as? IMKTextInput else {
             return false
